@@ -7,3 +7,5 @@ window.GrowthBook = r;
 function setCookie(t){const o=new Date;o.setTime(o.getTime()+24*365*60*60*1e3);let i="expires="+o.toUTCString();document.cookie="gb-gb-anon-id="+t+";"+i+";path=/";return t}function getCookie(t){let e=t+"=",n=document.cookie.split(";");for(let t=0;t<n.length;t++){let o=n[t];for(;" "==o.charAt(0);)o=o.substring(1);if(0==o.indexOf(e)){const t=o.substring(e.length,o.length);return setCookie(t),t}}return!1}
 // 2.1 Generate anonymous ID
 function generateAnonID(){const n=50;for(var r="",t="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789",a=t.length,o=0;o<n;o++)r+=t.charAt(Math.floor(Math.random()*a));return r}
+
+// DELTE ME

@@ -8,4 +8,4 @@ function setCookie(t){const o=new Date;o.setTime(o.getTime()+24*365*60*60*1e3);l
 // 2.1 Generate anonymous ID
 function generateAnonID(){const n=50;for(var r="",t="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789",a=t.length,o=0;o<n;o++)r+=t.charAt(Math.floor(Math.random()*a));return r}
 
-// DELTE ME
+// DELTE ME 2

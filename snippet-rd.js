@@ -57,7 +57,7 @@ window.gb_draft_experiments =
 [
 {'id': 002,'main': {
     trigger: function(){
-        if (document.location.pathname.includes('/blog')) {
+        if (document.location.pathname.includes('/')) {
             return true;
         }
         return false;

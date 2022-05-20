@@ -18,6 +18,7 @@ window.growthbook = new GrowthBook({
 
     // Called when a user is put into an experiment
     trackingCallback: function(experiment, result) {
+        window.dataLayer = window.dataLayer || [];
         window.dataLayer.push({
             'event': 'growthbook-variant-assigned',
             'growthbook-experiment-id': experiment.key,
@@ -81,16 +82,20 @@ window.gb_draft_experiments =
 (function(){
     window.gb_run_experiment = function(e,v){
         if (v.inExperiment) {
-            if (e.main.trigger === true) {
+            if (e.main.trigger() === true) {
                 e.main.variants[v.variationId]()
             }
         }
     }
     for (var i = 0; i < window.gb_running_experiments.length; i++) {
         var e = window.gb_running_experiments[i];
+        var variations = [];
+        for (var i = 0; i < e.main.variants.length; i++) {
+            variations.push(i);
+        }
         var gb_value = window.growthbook.run({
             "key": e.id,
-            "variations": function(){a=[];for (var i = 0; i < e.main.variants.length; i++){a.push(i)}},
+            "variations": variations,
             "status": e.gb_settings.status,
             "coverage":  e.gb_settings.coverage,
             "weights":  e.gb_settings.weights,
@@ -100,4 +105,4 @@ window.gb_draft_experiments =
     }
 })();
 
-window.gb_snippet_version='2022-05-20 20:43:51.505227';
+window.gb_snippet_version='2022-05-20 21:41:57.306410';

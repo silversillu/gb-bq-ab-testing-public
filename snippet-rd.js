@@ -51,13 +51,13 @@ window.gb_running_experiments = [
         // Add more variants if needed
     ]
 }
-,'gb_settings':{'weights': [0.5, 0.5], 'coverage': 1, 'url': '.*', 'status': 'running'}}
+,'gb_settings':{'coverage': 1, 'status': 'running', 'weights': [0.5, 0.5], 'url': '.*'}}
 ];
 window.gb_draft_experiments = 
 [
 {'id': 002,'main': {
     trigger: function(){
-        if (document.location.pathname.includes('/src-test-3')) {
+        if (document.location.pathname.includes('/src-test-4')) {
             return true;
         }
         return false;
@@ -74,7 +74,7 @@ window.gb_draft_experiments =
         // Add more variants if needed
     ]
 }
-,'gb_settings':{'weights': [0.5, 0.5], 'coverage': 1, 'status': 'draft'}}
+,'gb_settings':{'coverage': 1, 'status': 'draft', 'weights': [0.5, 0.5]}}
 ];
 
 // 6. Core snippet 2/2
@@ -100,4 +100,4 @@ window.gb_draft_experiments =
     }
 })();
 
-window.gb_snippet_version='2022-05-13 15:49:20.563176';
+window.gb_snippet_version='2022-05-20 20:43:51.505227';

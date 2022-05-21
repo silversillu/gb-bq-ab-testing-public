@@ -52,7 +52,7 @@ window.gb_running_experiments = [
         // Add more variants if needed
     ]
 }
-,'gb_settings':{'coverage': 1, 'status': 'running', 'weights': [0.5, 0.5], 'url': '.*'}}
+,'gb_settings':{'status': 'running', 'url': '.*', 'coverage': 1, 'weights': [0.5, 0.5]}}
 ];
 window.gb_draft_experiments = 
 [
@@ -75,7 +75,7 @@ window.gb_draft_experiments =
         // Add more variants if needed
     ]
 }
-,'gb_settings':{'coverage': 1, 'status': 'draft', 'weights': [0.5, 0.5]}}
+,'gb_settings':{'status': 'draft', 'coverage': 1, 'weights': [0.5, 0.5]}}
 ];
 
 // 6. Core snippet 2/2
@@ -105,4 +105,4 @@ window.gb_draft_experiments =
     }
 })();
 
-window.gb_snippet_version='2022-05-21 13:40:23.014184';
+window.gb_snippet_version='2022-05-21 12:08:35.531807';

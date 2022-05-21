@@ -43,11 +43,11 @@ window.gb_running_experiments = [
     variants: [
         // Control
         function(){
-            console.log('running code for control (0.1)');
+            console.log('running code for control (0.2)');
         },
         // Variant 1
         function(){
-            console.log('running code for variant 1.1');
+            console.log('running code for variant 1.2');
         }
         // Add more variants if needed
     ]
@@ -105,4 +105,4 @@ window.gb_draft_experiments =
     }
 })();
 
-window.gb_snippet_version='2022-05-20 21:46:55.892186';
+window.gb_snippet_version='2022-05-21 13:37:42.243567';

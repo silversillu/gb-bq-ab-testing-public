@@ -52,7 +52,7 @@ window.gb_running_experiments = [
         // Add more variants if needed
     ]
 }
-,'gb_settings':{'status': 'running', 'url': '.*', 'coverage': 1, 'weights': [0.5, 0.5]}}{'id': 003,'main': {
+,'gb_settings':{'status': 'running', 'url': '.*', 'coverage': 1, 'weights': [0.5, 0.5]}},{'id': 003,'main': {
     trigger: function(){
         // Running on all pages
         if (document.location.pathname.includes('/')) {
@@ -75,7 +75,7 @@ window.gb_running_experiments = [
         }
     ]
 }
-,'gb_settings':{'status': 'running', 'coverage': 1, 'weights': [0.5, 0.5]}}
+,'gb_settings':{'status': 'running', 'coverage': 1, 'weights': [0.5, 0.5]}},
 ];
 window.gb_draft_experiments = 
 [
@@ -98,7 +98,7 @@ window.gb_draft_experiments =
         // Add more variants if needed
     ]
 }
-,'gb_settings':{'status': 'draft', 'coverage': 1, 'weights': [0.5, 0.5]}}
+,'gb_settings':{'status': 'draft', 'coverage': 1, 'weights': [0.5, 0.5]}},
 ];
 
 // 6. Core snippet 2/2
@@ -128,4 +128,4 @@ window.gb_draft_experiments =
     }
 })();
 
-window.gb_snippet_version='2022-05-22 08:04:30.349566';
+window.gb_snippet_version='2022-05-22 08:14:17.483070';

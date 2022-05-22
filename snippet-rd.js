@@ -33,7 +33,41 @@ console.log('global JS loaded');
 
 // 5. Experiments
 window.gb_running_experiments = [
-
+{'id': rd004,'main': {
+    trigger: function(){
+        // Running on all pages
+        if (document.location.pathname.includes('/')) {
+            return true;
+        }
+        return false;
+    },
+    variants: [
+        // Control
+        function(){
+            console.log('running code for control (newsletter test)');
+        },
+        // Variant 1
+        function(){
+            function defer(method) {
+                if (window.jQuery) {
+                    method();
+                } else {
+                    setTimeout(function() { defer(method) }, 50);
+                }
+            }
+            defer(function(){
+                jQuery(document).ready(function(){
+                    jQuery('.mc4wp-form h3').each(function(){
+                        jQuery(this).text(jQuery(this).text().replace('7900+', '11,900+'));
+                        jQuery(this).text(jQuery(this).text().replace('data-savvy digital experts', 'data-driven marketers'));
+                    });
+                });
+            });
+            window.like_what_youre_reading_popup_copy = "Join 11,900+ data-driven marketers on our list!";
+        }
+    ]
+}
+,'gb_settings':{'rules': [{'variations': [0, 1], 'weights': [0.5, 0.5], 'hashAttribute': 'anonymous_id', 'key': 'rd004'}], 'defaultValue': 0}},
 ];
 window.gb_draft_experiments = 
 [
@@ -67,4 +101,4 @@ window.gb_draft_experiments =
     }
 })();
 
-window.gb_snippet_version='2022-05-22 19:39:30.318767';
+window.gb_snippet_version='2022-05-22 20:05:45.944511';

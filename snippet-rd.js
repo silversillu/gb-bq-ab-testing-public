@@ -33,7 +33,7 @@ console.log('global JS loaded');
 
 // 5. Experiments
 window.gb_running_experiments = [
-{'id': rd004,'main': {
+{'id': 'rd004' ,'main': {
     trigger: function(){
         // Running on all pages
         if (document.location.pathname.includes('/')) {
@@ -67,7 +67,8 @@ window.gb_running_experiments = [
         }
     ]
 }
-,'gb_settings':{'rules': [{'variations': [0, 1], 'weights': [0.5, 0.5], 'hashAttribute': 'anonymous_id', 'key': 'rd004'}], 'defaultValue': 0}},
+, 'gb_settings':{'rules': [{'variations': [0, 1], 'weights': [0.5, 0.5], 'hashAttribute': 'anonymous_id', 'key': 'rd004'}], 'defaultValue': 0}},
+
 ];
 window.gb_draft_experiments = 
 [
@@ -101,4 +102,4 @@ window.gb_draft_experiments =
     }
 })();
 
-window.gb_snippet_version='2022-05-22 20:05:45.944511';
+window.gb_snippet_version='2022-05-22 20:17:10.707127';

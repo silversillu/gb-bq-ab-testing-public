@@ -33,9 +33,10 @@ console.log('global JS loaded');
 
 // 5. Experiments
 window.gb_running_experiments = [
-{'id': 001,'main': {
+{'id': 'rd004' ,'main': {
     trigger: function(){
-        if (document.location.pathname.includes('/blog')) {
+        // Running on all pages
+        if (document.location.pathname.includes('/')) {
             return true;
         }
         return false;
@@ -43,39 +44,35 @@ window.gb_running_experiments = [
     variants: [
         // Control
         function(){
-            console.log('running code for control (0.4)');
+            console.log('running code for control (newsletter test)');
         },
         // Variant 1
         function(){
-            console.log('running code for variant 1.4');
+            function defer(method) {
+                if (window.jQuery) {
+                    method();
+                } else {
+                    setTimeout(function() { defer(method) }, 50);
+                }
+            }
+            defer(function(){
+                jQuery(document).ready(function(){
+                    jQuery('.mc4wp-form h3').each(function(){
+                        jQuery(this).text(jQuery(this).text().replace('7900+', '11,900+'));
+                        jQuery(this).text(jQuery(this).text().replace('data-savvy digital experts', 'data-driven marketers'));
+                    });
+                });
+            });
+            window.like_what_youre_reading_popup_copy = "Join 11,900+ data-driven marketers on our list!";
         }
-        // Add more variants if needed
     ]
 }
-,'gb_settings':{'status': 'running', 'url': '.*', 'coverage': 1, 'weights': [0.5, 0.5]}},
+, 'gb_settings':{'variations': [0, 1], 'weights': [0.5, 0.5], 'condition': {'deviceId': '123', 'browser': 'chrome'}, 'hashAttribute': 'anonymous_id', 'key': 'rd004'}},
+
 ];
 window.gb_draft_experiments = 
 [
-{'id': 002,'main': {
-    trigger: function(){
-        if (document.location.pathname.includes('/src-test-4')) {
-            return true;
-        }
-        return false;
-    },
-    variants: [
-        // Control
-        function(){
-            console.log('EXP 2 - running code for control (0.0)');
-        },
-        // Variant 1
-        function(){
-            console.log('EXP 2 - running code for variant 1');
-        }
-        // Add more variants if needed
-    ]
-}
-,'gb_settings':{'status': 'draft', 'coverage': 1, 'weights': [0.5, 0.5]}},
+
 ];
 
 // 6. Core snippet 2/2
@@ -105,4 +102,4 @@ window.gb_draft_experiments =
     }
 })();
 
-window.gb_snippet_version='2022-05-22 17:35:44.531200';
+window.gb_snippet_version='2022-05-22 20:36:10.006254';

@@ -33,10 +33,9 @@ console.log('global JS loaded');
 
 // 5. Experiments
 window.gb_running_experiments = [
-{'id': 'rd004' ,'main': {
+{'id': 001,'main': {
     trigger: function(){
-        // Running on all pages
-        if (document.location.pathname.includes('/')) {
+        if (document.location.pathname.includes('/blog')) {
             return true;
         }
         return false;
@@ -44,35 +43,39 @@ window.gb_running_experiments = [
     variants: [
         // Control
         function(){
-            console.log('running code for control (newsletter test)');
+            console.log('running code for control (0.4)');
         },
         // Variant 1
         function(){
-            function defer(method) {
-                if (window.jQuery) {
-                    method();
-                } else {
-                    setTimeout(function() { defer(method) }, 50);
-                }
-            }
-            defer(function(){
-                jQuery(document).ready(function(){
-                    jQuery('.mc4wp-form h3').each(function(){
-                        jQuery(this).text(jQuery(this).text().replace('7900+', '11,900+'));
-                        jQuery(this).text(jQuery(this).text().replace('data-savvy digital experts', 'data-driven marketers'));
-                    });
-                });
-            });
-            window.like_what_youre_reading_popup_copy = "Join 11,900+ data-driven marketers on our list!";
+            console.log('running code for variant 1.4');
         }
+        // Add more variants if needed
     ]
 }
-, 'gb_settings':{'variations': [0, 1], 'weights': [0.5, 0.5], 'condition': {'deviceId': '123', 'browser': 'chrome'}, 'hashAttribute': 'anonymous_id', 'key': 'rd004'}},
-
+,'gb_settings':{'status': 'running', 'url': '.*', 'coverage': 1, 'weights': [0.5, 0.5]}},
 ];
 window.gb_draft_experiments = 
 [
-
+{'id': 002,'main': {
+    trigger: function(){
+        if (document.location.pathname.includes('/src-test-4')) {
+            return true;
+        }
+        return false;
+    },
+    variants: [
+        // Control
+        function(){
+            console.log('EXP 2 - running code for control (0.0)');
+        },
+        // Variant 1
+        function(){
+            console.log('EXP 2 - running code for variant 1');
+        }
+        // Add more variants if needed
+    ]
+}
+,'gb_settings':{'status': 'draft', 'coverage': 1, 'weights': [0.5, 0.5]}},
 ];
 
 // 6. Core snippet 2/2
@@ -94,6 +97,7 @@ window.gb_draft_experiments =
             "key": e.id,
             "variations": variations,
             //"status": e.gb_settings.status,
+            "condition": e.gb_settings.condition,
             "coverage":  e.gb_settings.coverage,
             "weights":  e.gb_settings.weights,
             "hashAttribute": e.gb_settings.hashAttribute
@@ -102,4 +106,4 @@ window.gb_draft_experiments =
     }
 })();
 
-window.gb_snippet_version='2022-05-22 20:36:10.006254';
+window.gb_snippet_version='2022-05-22 17:38:13.366018';

@@ -67,7 +67,7 @@ window.gb_running_experiments = [
         }
     ]
 }
-, 'gb_settings':{'variations': [0, 1], 'weights': [0.5, 0.5], 'condition': {'deviceId': '123', 'browser': 'chrome'}, 'hashAttribute': 'anonymous_id', 'key': 'rd004'}},
+, 'gb_settings':{'condition': {'browser': 'chrome', 'deviceId': '123'}, 'variations': [0, 1], 'weights': [0.5, 0.5], 'key': 'rd004', 'hashAttribute': 'anonymous_id'}},
 
 ];
 window.gb_draft_experiments = 
@@ -103,4 +103,4 @@ window.gb_draft_experiments =
     }
 })();
 
-window.gb_snippet_version='2022-05-22 20:39:02.861033';
+window.gb_snippet_version='2022-05-22 17:46:45.182169';

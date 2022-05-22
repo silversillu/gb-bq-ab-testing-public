@@ -67,9 +67,18 @@ window.gb_running_experiments = [
         },
         // Variant 1
         function(){
-            jQuery('.mc4wp-form h3').each(function(){
-                jQuery(this).text(jQuery(this).text().replace('7900+', '11,900+'));
-                jQuery(this).text(jQuery(this).text().replace('data-savvy digital experts', 'data-driven marketers'));
+            function defer(method) {
+                if (window.jQuery) {
+                    method();
+                } else {
+                    setTimeout(function() { defer(method) }, 50);
+                }
+            }
+            defer(function(){
+                jQuery('.mc4wp-form h3').each(function(){
+                    jQuery(this).text(jQuery(this).text().replace('7900+', '11,900+'));
+                    jQuery(this).text(jQuery(this).text().replace('data-savvy digital experts', 'data-driven marketers'));
+                });
             });
             window.like_what_youre_reading_popup_copy = "Join 11,900+ data-driven marketers on our list!";
         }
@@ -128,4 +137,4 @@ window.gb_draft_experiments =
     }
 })();
 
-window.gb_snippet_version='2022-05-22 08:14:17.483070';
+window.gb_snippet_version='2022-05-22 08:23:32.851213';

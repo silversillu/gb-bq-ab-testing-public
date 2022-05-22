@@ -14,7 +14,7 @@
 // 3. init.js
 window.growthbook = new GrowthBook({
     // The attributes used to assign variations
-    user: { anonId: gb_getCookie('gb-gb-anon-id') ? gb_getCookie('gb-gb-anon-id') : gb_setCookie(gb_generateAnonID()) },
+    user: { anonymous_id: gb_getCookie('gb-gb-anon-id') ? gb_getCookie('gb-gb-anon-id') : gb_setCookie(gb_generateAnonID()) },
 
     // Called when a user is put into an experiment
     trackingCallback: function(experiment, result) {
@@ -93,13 +93,13 @@ window.gb_draft_experiments =
         var gb_value = window.growthbook.run({
             "key": e.id,
             "variations": variations,
-            "status": e.gb_settings.status,
+            //"status": e.gb_settings.status,
             "coverage":  e.gb_settings.coverage,
             "weights":  e.gb_settings.weights,
-            "hashAttribute": "anonId"
+            "hashAttribute": e.gb_settings.hashAttribute
         });
         window.gb_run_experiment(e,gb_value)
     }
 })();
 
-window.gb_snippet_version='2022-05-22 20:17:10.707127';
+window.gb_snippet_version='2022-05-22 20:27:21.194856';

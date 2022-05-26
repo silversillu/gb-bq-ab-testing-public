@@ -5,16 +5,20 @@
 
     // 2. Helper functions
     // 2.1 Set & get cookies
-    window.gb_setCookie = function(t){const o=new Date;o.setTime(o.getTime()+24*365*60*60*1e3);let i="expires="+o.toUTCString();document.cookie="gb-gb-anon-id="+t+";"+i+";path=/";return t}
-    window.gb_getCookie = function(t){let e=t+"=",n=document.cookie.split(";");for(let t=0;t<n.length;t++){let o=n[t];for(;" "==o.charAt(0);)o=o.substring(1);if(0==o.indexOf(e)){const t=o.substring(e.length,o.length);return window.gb_getCookie(t),t}}return!1}
+    window.gb_setCookie = function(key, value){const o=new Date;o.setTime(o.getTime()+24*365*60*60*1e3);let i="expires="+o.toUTCString();document.cookie=key+"="+value+";"+i+";path=/";return value}
+    window.gb_getCookie = function(key){let e=key+"=",n=document.cookie.split(";");for(let t=0;t<n.length;t++){let o=n[t];for(;" "==o.charAt(0);)o=o.substring(1);if(0==o.indexOf(e)){const t=o.substring(e.length,o.length);return window.gb_getCookie(t),t}}return!1}
     // 2.1 Generate anonymous ID
     window.gb_generateAnonID = function(){const n=50;for(var r=Date.now()+'.',t="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789",a=t.length,o=0;o<n;o++)r+=t.charAt(Math.floor(Math.random()*a));return r}
-})();
+    // 2.2 Preview mode
+    var regex = /gb-preview-mode\=([a-zA-z0-9\=,]+)/;var match = document.location.search.match(regex);
+    if(document.location.search.includes("gb-preview-mode=quit")){window.gb_setCookie("gb-preview-mode");alert("Preview mode ended.");} // Cancel preview mode
+    else if(match && match.length > 1){console.log("Preview mode started: " + match[1]);alert("Preview mode started: " + match[1]);gb_setCookie('gb-preview-mode', match[1]);}
+ })();
 
 // 3. init.js
 window.growthbook = new GrowthBook({
     // The attributes used to assign variations
-    attributes: { anonymous_id: gb_getCookie('gb-gb-anon-id') ? gb_getCookie('gb-gb-anon-id') : gb_setCookie(gb_generateAnonID()) },
+    attributes: { anonymous_id: gb_getCookie('gb-gb-anon-id') ? gb_getCookie('gb-gb-anon-id') : gb_setCookie('gb-gb-anon-id', gb_generateAnonID()) },
 
     // Called when a user is put into an experiment
     trackingCallback: function(experiment, result) {
@@ -78,7 +82,9 @@ window.gb_draft_experiments =
 // 6. Core snippet 2/2
 (function(){
     window.gb_run_experiment = function(e,v){
-        if (v.inExperiment) {
+        if (window.gb_preview_mode) {
+            console.log("Not running exp " + e.id + " because preview mode is active.");
+        } else if (v.inExperiment) {
             if (e.main.trigger() === true) {
                 e.main.variants[v.variationId]()
             }
@@ -103,4 +109,4 @@ window.gb_draft_experiments =
     }
 })();
 
-window.gb_snippet_version='2022-05-25 15:22:38.534722';
+window.gb_snippet_version='2022-05-26 13:07:58.720252';

@@ -35,7 +35,27 @@ window.gb_preview_experiments = [
     ]
 }
 },
+{'id': 'rd005' ,'main': {
+    trigger: function(){
+        // Running on all pages
+        if (document.location.pathname.includes('/')) {
+            return true;
+        }
+        return false;
+    },
+    variants: [
+        // Control
+        function(){
+            console.log('running code for control (5.1)');
+        },
+        // Variant 1
+        function(){
+            console.log('running code for control (5.2)');
+        }
+    ]
+}
+},
 
 ];
 
-window.gb_snippet_version='2022-05-26 13:43:21.573608';
+window.gb_snippet_version='2022-05-31 13:31:55.123390';

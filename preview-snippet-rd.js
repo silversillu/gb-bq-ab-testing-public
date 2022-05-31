@@ -71,7 +71,9 @@ window.gb_preview_experiments = [
         // Variant 1
         function(){
             console.log('running code for control (6.0)');
-            document.querySelector('.elementor-element-30197cf h2').innerHTML = 'test'
+            document.addEventListener('DOMContentLoaded', function(event) {
+              document.querySelector('.elementor-element-30197cf h2').innerHTML = 'test';
+            });
         }
     ]
 }
@@ -79,4 +81,4 @@ window.gb_preview_experiments = [
 
 ];
 
-window.gb_snippet_version='2022-05-31 15:06:03.973752';
+window.gb_snippet_version='2022-05-31 15:09:52.627331';

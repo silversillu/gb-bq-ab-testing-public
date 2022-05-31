@@ -10,9 +10,12 @@
     // 2.1 Generate anonymous ID
     window.gb_generateAnonID = function(){const n=50;for(var r=Date.now()+'.',t="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789",a=t.length,o=0;o<n;o++)r+=t.charAt(Math.floor(Math.random()*a));return r}
     // 2.2 Preview mode
+    window.gb_preview_mode = false;
+    var preview_mode_cookie = gb_getCookie("gb-preview-mode");
     var regex = /gb-preview-mode\=([a-zA-z0-9\=,]+)/;var match = document.location.search.match(regex);
-    if(document.location.search.includes("gb-preview-mode=quit")){window.gb_setCookie("gb-preview-mode");alert("Preview mode ended.");} // Cancel preview mode
-    else if(match && match.length > 1){console.log("Preview mode started: " + match[1]);alert("Preview mode started: " + match[1]);gb_setCookie('gb-preview-mode', match[1]);}
+    if(document.location.search.includes("gb-preview-mode=quit")){window.gb_setCookie("gb-preview-mode");window.gb_preview_mode = false;alert("Preview mode ended.");} // Cancel preview mode
+    else if(match && match.length > 1){console.log("Preview mode started: " + match[1]);window.gb_preview_mode=match[1];alert("Preview mode started: " + match[1]);gb_setCookie('gb-preview-mode', match[1]);}
+    else if(preview_mode_cookie && preview_mode_cookie != "" && preview_mode_cookie != "undefined"){window.gb_preview_mode=preview_mode_cookie}
  })();
 
 // 3. init.js
@@ -82,31 +85,55 @@ window.gb_draft_experiments =
 // 6. Core snippet 2/2
 (function(){
     window.gb_run_experiment = function(e,v){
-        if (window.gb_preview_mode) {
-            console.log("Not running exp " + e.id + " because preview mode is active.");
-        } else if (v.inExperiment) {
+        if (v.inExperiment) {
             if (e.main.trigger() === true) {
                 e.main.variants[v.variationId]()
             }
         }
     }
-    for (var i = 0; i < window.gb_running_experiments.length; i++) {
-        var e = window.gb_running_experiments[i];
-        var variations = [];
-        for (var i2 = 0; i2 < e.main.variants.length; i2++) {
-            variations.push(i2);
+    if (window.gb_preview_mode) {
+        var exps_in_preview_mode = window.gb_preview_mode.split(',');
+        var main_snippet_url = document.getElementById("gb-bq-snippet").attributes.src.value;
+        var preview_snippet_url = main_snippet_url.replace('/snippet', '/preview-snippet');
+        fetch(preview_snippet_url)
+            .then(function(response){return response.text()})
+            .then(function(txt){eval(txt)})
+            .then(function(){
+                if (!gb_preview_experiments || gb_preview_experiments.length == 0) {
+                    console.log('No previewable experiments found in ' + preview_snippet_url);
+                    return;
+                }
+                for (var i=0;i<exps_in_preview_mode.length;i++) {
+                    var exp_id = exps_in_preview_mode[i][0];
+                    var var_id = exps_in_preview_mode[i][1];
+                    for (var i2=0;i2<gb_preview_experiments.length;i2++) {
+                        if (gb_preview_experiments[i]['id'] == exp_id) {
+                            console.log('Testing trigger for ' + exp_id + '. Result: ' + gb_preview_experiments[i].trigger());
+                            console.log('Previewing experiment and variant: ' + exp_id + ':' + var_id);
+                            gb_preview_experiments[i].variants[var_id]();
+                        }
+                    }
+                }
+            });
+    } else {
+        for (var i = 0; i < window.gb_running_experiments.length; i++) {
+            var e = window.gb_running_experiments[i];
+            var variations = [];
+            for (var i2 = 0; i2 < e.main.variants.length; i2++) {
+                variations.push(i2);
+            }
+            var gb_value = window.growthbook.run({
+                "key": e.id,
+                "variations": variations,
+                //"status": e.gb_settings.status,
+                "condition": e.gb_settings.condition,
+                "coverage":  e.gb_settings.coverage,
+                "weights":  e.gb_settings.weights,
+                "hashAttribute": e.gb_settings.hashAttribute
+            });
+            window.gb_run_experiment(e,gb_value)
         }
-        var gb_value = window.growthbook.run({
-            "key": e.id,
-            "variations": variations,
-            //"status": e.gb_settings.status,
-            "condition": e.gb_settings.condition,
-            "coverage":  e.gb_settings.coverage,
-            "weights":  e.gb_settings.weights,
-            "hashAttribute": e.gb_settings.hashAttribute
-        });
-        window.gb_run_experiment(e,gb_value)
     }
 })();
 
-window.gb_snippet_version='2022-05-27 14:47:50.884472';
+window.gb_snippet_version='2022-05-31 12:56:53.751788';

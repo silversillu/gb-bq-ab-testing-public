@@ -12,7 +12,7 @@
     // 2.2 Preview mode
     window.gb_preview_mode = false;
     var preview_mode_cookie = gb_getCookie("gb-preview-mode");
-    var regex = /gb-preview-mode\=([a-zA-z0-9\=,]+)/;var match = document.location.search.match(regex);
+    var regex = /gb-preview-mode\=([a-zA-z0-9\~\.]+)/;var match = document.location.search.match(regex);
     if(document.location.search.includes("gb-preview-mode=quit")){window.gb_setCookie("gb-preview-mode");window.gb_preview_mode = false;alert("Preview mode ended.");} // Cancel preview mode
     else if(match && match.length > 1){console.log("Preview mode started: " + match[1]);window.gb_preview_mode=match[1];alert("Preview mode started: " + match[1]);gb_setCookie('gb-preview-mode', match[1]);}
     else if(preview_mode_cookie && preview_mode_cookie != "" && preview_mode_cookie != "undefined"){window.gb_preview_mode=preview_mode_cookie}
@@ -92,7 +92,7 @@ window.gb_draft_experiments =
         }
     }
     if (window.gb_preview_mode) {
-        var exps_in_preview_mode = window.gb_preview_mode.split(',');
+        var exps_in_preview_mode = window.gb_preview_mode.split('~');
         var main_snippet_url = document.getElementById("gb-bq-snippet").attributes.src.value;
         var preview_snippet_url = main_snippet_url.replace('/snippet', '/preview-snippet');
         fetch(preview_snippet_url)
@@ -104,7 +104,7 @@ window.gb_draft_experiments =
                     return;
                 }
                 for (var i=0;i<exps_in_preview_mode.length;i++) {
-                    var exp = exps_in_preview_mode[i].split('=');
+                    var exp = exps_in_preview_mode[i].split('.');
                     var exp_id = exp[0];
                     var var_id = exp[1];
                     for (var i2=0;i2<gb_preview_experiments.length;i2++) {
@@ -137,4 +137,4 @@ window.gb_draft_experiments =
     }
 })();
 
-window.gb_snippet_version='2022-05-31 14:17:39.451805';
+window.gb_snippet_version='2022-05-31 14:58:55.729487';

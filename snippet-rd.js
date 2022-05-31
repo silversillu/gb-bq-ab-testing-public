@@ -104,13 +104,14 @@ window.gb_draft_experiments =
                     return;
                 }
                 for (var i=0;i<exps_in_preview_mode.length;i++) {
-                    var exp_id = exps_in_preview_mode[i][0];
-                    var var_id = exps_in_preview_mode[i][1];
+                    var exp = exps_in_preview_mode[i].split('=');
+                    var exp_id = exp[0];
+                    var var_id = exp[1];
                     for (var i2=0;i2<gb_preview_experiments.length;i2++) {
-                        if (gb_preview_experiments[i]['id'] == exp_id) {
-                            console.log('Testing trigger for ' + exp_id + '. Result: ' + gb_preview_experiments[i].trigger());
+                        if (gb_preview_experiments[i2]['id'] == exp_id) {
+                            console.log('Testing trigger for ' + exp_id + '. Result: ' + gb_preview_experiments[i2].main.trigger());
                             console.log('Previewing experiment and variant: ' + exp_id + ':' + var_id);
-                            gb_preview_experiments[i].variants[var_id]();
+                            gb_preview_experiments[i2].main.variants[var_id]();
                         }
                     }
                 }
@@ -136,4 +137,4 @@ window.gb_draft_experiments =
     }
 })();
 
-window.gb_snippet_version='2022-05-31 13:31:22.984911';
+window.gb_snippet_version='2022-05-31 14:17:39.451805';

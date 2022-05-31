@@ -46,11 +46,11 @@ window.gb_preview_experiments = [
     variants: [
         // Control
         function(){
-            console.log('running code for control (5.1)');
+            console.log('running code for control (5.3)');
         },
         // Variant 1
         function(){
-            console.log('running code for control (5.2)');
+            console.log('running code for variant (5.3)');
         }
     ]
 }
@@ -70,7 +70,7 @@ window.gb_preview_experiments = [
         },
         // Variant 1
         function(){
-            console.log('running code for control (6.0)');
+            console.log('running code for variant (6.0)');
             document.addEventListener('DOMContentLoaded', function(event) {
               document.querySelector('.elementor-element-30197cf h2').innerHTML = 'test';
             });
@@ -81,4 +81,4 @@ window.gb_preview_experiments = [
 
 ];
 
-window.gb_snippet_version='2022-05-31 15:09:52.627331';
+window.gb_snippet_version='2022-05-31 16:47:33.888969';

@@ -55,28 +55,7 @@ window.gb_preview_experiments = [
     ]
 }
 },
-{'id': 'rd006' ,'main': {
-    trigger: function(){
-        // Running on the homepage only
-        if (document.location.pathname == '/')) {
-            return true;
-        }
-        return false;
-    },
-    variants: [
-        // Control
-        function(){
-            console.log('running code for control (6.0)');
-        },
-        // Variant 1
-        function(){
-            console.log('running code for control (6.0)');
-            document.querySelector('.elementor-element-30197cf h2').innerHTML = 'test'
-        }
-    ]
-}
-},
 
 ];
 
-window.gb_snippet_version='2022-05-31 14:31:26.322820';
+window.gb_snippet_version='2022-05-31 15:04:02.671592';

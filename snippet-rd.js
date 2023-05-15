@@ -74,7 +74,7 @@ window.gb_running_experiments = [
         }
     ]
 }
-, 'gb_settings':{'variations': [0, 1], 'weights': [0.5, 0.5], 'key': 'rd004', 'hashAttribute': 'anonymous_id'}},
+, 'gb_settings':{'variations': [0, 1], 'coverage': 1, 'weights': [0.5, 0.5], 'key': 'rd004', 'hashAttribute': 'anonymous_id'}},
 
 ];
 window.gb_draft_experiments = 
@@ -137,4 +137,4 @@ window.gb_draft_experiments =
     }
 })();
 
-window.gb_snippet_version='2022-05-31 14:58:55.729487';
+window.gb_snippet_version='2023-05-15 11:53:17.234921';

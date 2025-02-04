@@ -74,7 +74,7 @@ window.gb_running_experiments = [
         }
     ]
 }
-, 'gb_settings':{'variations': [0, 1], 'coverage': 1, 'weights': [0.5, 0.5], 'key': 'rd004', 'hashAttribute': 'anonymous_id'}},
+, 'gb_settings':{'key': 'rd004', 'variations': [0, 1], 'weights': [0.5, 0.5], 'coverage': 1, 'hashAttribute': 'anonymous_id', 'meta': [{'key': '0'}, {'key': '1'}]}},
 
 ];
 window.gb_draft_experiments = 
@@ -137,4 +137,4 @@ window.gb_draft_experiments =
     }
 })();
 
-window.gb_snippet_version='2023-05-15 12:00:26.635397';
+window.gb_snippet_version='2025-02-04 15:07:40.829173';

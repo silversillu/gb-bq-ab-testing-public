@@ -21,7 +21,10 @@
 // 3. init.js
 window.growthbook = new GrowthBook({
     // The attributes used to assign variations
-    attributes: { anonymous_id: gb_getCookie('gb-gb-anon-id') ? gb_getCookie('gb-gb-anon-id') : gb_setCookie('gb-gb-anon-id', gb_generateAnonID()) },
+    attributes: {
+        anonymous_id: gb_getCookie('gb-gb-anon-id') ? gb_getCookie('gb-gb-anon-id') : gb_setCookie('gb-gb-anon-id', gb_generateAnonID()),
+        id: gb_getCookie('gb-gb-anon-id') ? gb_getCookie('gb-gb-anon-id') : gb_setCookie('gb-gb-anon-id', gb_generateAnonID())
+    },
 
     // Called when a user is put into an experiment
     trackingCallback: function(experiment, result) {
@@ -157,4 +160,4 @@ window.gb_draft_experiments =
     }
 })();
 
-window.gb_snippet_version='2025-02-04 15:23:21.511873';
+window.gb_snippet_version='2025-02-04 15:37:08.242253';

@@ -75,6 +75,26 @@ window.gb_running_experiments = [
     ]
 }
 , 'gb_settings':{'key': 'rd004', 'variations': [0, 1], 'weights': [0.5, 0.5], 'coverage': 1, 'hashAttribute': 'anonymous_id', 'meta': [{'key': '0'}, {'key': '1'}]}},
+{'id': '007' ,'main': {
+    trigger: function(){
+        // Running on the homepage only
+        if (document.location.pathname == '/') {
+            return true;
+        }
+        return false;
+    },
+    variants: [
+        // Control
+        function(){
+            console.log('running code for control (7.0)');
+        },
+        // Variant 1
+        function(){
+            console.log('running code for variant (7.0)');
+        }
+    ]
+}
+, 'gb_settings':{'key': '007', 'variations': [0, 1], 'weights': [0.5, 0.5], 'coverage': 1, 'hashAttribute': 'id', 'hashVersion': 2, 'meta': [{'key': '0'}, {'key': '1'}], 'seed': '2acf3df0-426c-403b-8dd8-219225110230', 'phase': '0'}},
 
 ];
 window.gb_draft_experiments = 
@@ -137,4 +157,4 @@ window.gb_draft_experiments =
     }
 })();
 
-window.gb_snippet_version='2025-02-04 15:20:27.067703';
+window.gb_snippet_version='2025-02-04 15:23:07.275359';

@@ -1,9 +1,8 @@
 
 window.gb_preview_experiments = [
-{'id': 'rd004' ,'main': {
+{'id': '002' ,'main': {
     trigger: function(){
-        // Running on all pages
-        if (document.location.pathname.includes('/')) {
+        if (document.location.pathname.includes('/src-test-4')) {
             return true;
         }
         return false;
@@ -11,51 +10,17 @@ window.gb_preview_experiments = [
     variants: [
         // Control
         function(){
-            console.log('running code for control (newsletter test)');
+            console.log('EXP 2 - running code for control (0.0)');
         },
         // Variant 1
         function(){
-            function defer(method) {
-                if (window.jQuery) {
-                    method();
-                } else {
-                    setTimeout(function() { defer(method) }, 50);
-                }
-            }
-            defer(function(){
-                jQuery(document).ready(function(){
-                    jQuery('.mc4wp-form h3').each(function(){
-                        jQuery(this).text(jQuery(this).text().replace('7900+', '11,900+'));
-                        jQuery(this).text(jQuery(this).text().replace('data-savvy digital experts', 'data-driven marketers'));
-                    });
-                });
-            });
-            window.like_what_youre_reading_popup_copy = "Join 11,900+ data-driven marketers on our list!";
+            console.log('EXP 2 - running code for variant 1');
         }
+        // Add more variants if needed
     ]
 }
-},
-{'id': 'rd005' ,'main': {
-    trigger: function(){
-        // Running on all pages
-        if (document.location.pathname.includes('/')) {
-            return true;
-        }
-        return false;
-    },
-    variants: [
-        // Control
-        function(){
-            console.log('running code for control (5.3)');
-        },
-        // Variant 1
-        function(){
-            console.log('running code for variant (5.3)');
-        }
-    ]
-}
-},
-{'id': 'rd006' ,'main': {
+, 'gb_settings':{'coverage': 1, 'weights': [0.5, 0.5], 'hashAttribute': 'id'}},
+{'id': '008' ,'main': {
     trigger: function(){
         // Running on the homepage only
         if (document.location.pathname == '/') {
@@ -66,19 +31,16 @@ window.gb_preview_experiments = [
     variants: [
         // Control
         function(){
-            console.log('running code for control (6.0)');
+            console.log('running code for control (8.0)');
         },
         // Variant 1
         function(){
-            console.log('running code for variant (6.0)');
-            document.addEventListener('DOMContentLoaded', function(event) {
-              document.querySelector('.elementor-element-30197cf h2').innerHTML = 'test';
-            });
+            console.log('running code for variant (8.0)');
         }
     ]
 }
-},
+, 'gb_settings':{'coverage': 1, 'weights': [0.3334, 0.3333, 0.3333], 'hashAttribute': 'anonymous_id'}},
 
 ];
 
-window.gb_snippet_version='2023-05-15 12:00:26.424069';
+window.gb_snippet_version='2025-02-05 12:02:04.061460';
